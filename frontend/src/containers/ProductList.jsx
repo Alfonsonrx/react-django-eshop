@@ -1,23 +1,30 @@
 import React from 'react';
-import ProductItem from '../components/ProductItem';
-import '../styles/ProductList.scss';
-import useGetProducts from 'hooks/useGetProducts';
+import { Navigate, useParams } from 'react-router-dom';
+import { useGetCategories, useGetProducts } from '../hooks/useGet';
+import { useSelector } from 'react-redux';
 
-const API ='https://api.escuelajs.co/api/v1/products';
+import ProductItem from '../components/ProductItem';
+import ProductDetail from '../containers/ProductDetail';
+
+import '../styles/ProductList.scss';
 
 const ProductList = () => {
+    const { detailShowed } = useSelector(state=>state.prodDetail)
 	
-	const products = useGetProducts(API);
+	let { id } = useParams();
 
-	return (
-		<section className="main-container">
+	const products = useGetProducts(id);
+
+    return (
+        <section className="main-container">
 			<div className="ProductList">
 				{products.map(product => (
 					<ProductItem product={product} key={product.id} />
 				))}
 			</div>
+			{detailShowed && <ProductDetail />}
 		</section>
-	);
+    );
 }
 
 export default ProductList;

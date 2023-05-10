@@ -11,13 +11,12 @@
 }
 .ProductInfo p:nth-child(2) {
 	color: var(--very-light-pink);
-	font-size: var(--md);
+	font-size: var(--lg);
 	margin-top: 0;
-	margin-bottom: 36px;
 }
 .ProductInfo p:nth-child(3) {
 	color: var(--very-light-pink);
-	font-size: var(--sm);
+	font-size: var(--md);
 	margin-top: 0;
 	margin-bottom: 36px;
 }
@@ -36,4 +35,9 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+@media (max-width: 640px) {
+	.add-to-cart-button p {
+		display: none;
+    }
 }

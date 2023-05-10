@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../components/Header';
+import Navbar from '../components/Navbar';
 
 const Layout = ({ children }) => {
     return (
         <div className="Layout">
-            <Header />
+            <Navbar />
             {children}
         </div>
     );

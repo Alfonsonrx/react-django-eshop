@@ -1,17 +1,24 @@
 import React from 'react';
-import ProductInfo from '../components/ProductInfo';
-import '../styles/ProductDetail.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeAndClear } from '../redux/productDetailSlice';
 
-import close from 'icons/icon_close.png';
+import ProductInfo from '../components/ProductInfo';
+
+import '../styles/ProductDetail.scss';
+import close from '../assets/icons/icon_close.png';
 
 const ProductDetail = () => {
+	const dispatch = useDispatch()
+
+	let { product } = useSelector((state)=>state.prodDetail)
+
 	return (
-		<aside className="ProductDetail">
-			<div className="ProductDetail-close">
-				<img src={close} alt="close" />
+		<div className="ProductDetail">
+			<div className="ProductDetail-close" onClick={()=>dispatch(closeAndClear())}>
+				<img src={close} alt="close"/>
 			</div>
-			<ProductInfo />
-		</aside>
+			<ProductInfo product={product} />
+		</div>
 	);
 }
 

@@ -8,6 +8,8 @@
 	height: 240px;
 	border-radius: 20px;
 	object-fit: cover;
+	z-index: -1;
+	position:relative;
 }
 .product-info {
 	display: flex;
@@ -28,7 +30,14 @@
 	margin-top: 0;
 	margin-bottom: 4px;
 }
-.product-info div p:nth-child(2) {
+// .product-info div p:nth-child(2) {
+// 	font-size: var(--md);
+// 	margin-top: 0;
+// 	margin-bottom: 0;
+// 	color: var(--very-light-pink);
+// }
+.product-info div a {
+	cursor: grab;
 	font-size: var(--sm);
 	margin-top: 0;
 	margin-bottom: 0;

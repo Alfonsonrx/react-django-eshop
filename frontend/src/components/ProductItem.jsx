@@ -1,27 +1,31 @@
-import React, { useContext } from 'react';
-import AppContext from '../context/AppContext';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+
 import '../styles/ProductItem.scss'
-import addToCartImage from 'icons/bt_add_to_cart.svg';
+import addToCartImage from '../assets/icons/bt_add_to_cart.svg';
+
+import { addToCart } from '../redux/cartSlice';
+import { openDetail } from '../redux/productDetailSlice';
+
 
 const ProductItem = ({ product }) => {
-	const { addToCart } = useContext(AppContext);
+    const dispatch = useDispatch()
 
-	const handleClick = item => {
-		addToCart(item);
-	}
-
-	return (
+    return (
 		<div className="ProductItem">
 			<img src={product.images[0]} alt={product.title} />
 			<div className="product-info">
 				<div>
 					<p>${product.price}</p>
-					<p>{product.title}</p>
+					<a onClick={()=>dispatch(openDetail(product))}>
+						{product.title}
+					</a>
 				</div>
-				<figure onClick={() => handleClick(product)} >
+				<figure onClick={() => dispatch(addToCart(product))} >
 					<img src={addToCartImage} alt="" />
 				</figure>
 			</div>
+
 		</div>
 	);
 }

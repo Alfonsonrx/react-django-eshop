@@ -1,17 +1,22 @@
-import React, {	useContext } from 'react';
+import React from 'react';
 import OrderItem from '../components/OrderItem';
-import AppContext from '../context/AppContext';
+import { useSelector } from 'react-redux';
 
 import '../styles/MyOrder.scss';
-import flechita from 'icons/flechita.svg';
+import flechita from '../assets/icons/flechita.svg';
+import { Navigate } from 'react-router-dom';
 
 const MyOrder = () => {
-	const {state} = useContext(AppContext)
+	const { cart }=useSelector((state)=>state.cart);
 
 	const sumTotal = () => {
 		const reducer = (accumulator, currentValue) => accumulator + currentValue.price;
-		const sum = state.cart.reduce(reducer, 0);
+		const sum = cart.reduce(reducer, 0);
 		return sum;
+	}
+
+	const handleCheckout = () => {
+		<Navigate to={'/checkout'} replace/>
 	}
 
     return (
@@ -21,7 +26,7 @@ const MyOrder = () => {
 				<p className="title">My order</p>
 			</div>
 			<div className="my-order-content">
-				{state.cart.map((product, index)=>(
+				{cart.map((product, index)=>(
 					<OrderItem indexValue={index} key={index} product={product} />
 				))}
 				<div className="order">
@@ -30,9 +35,11 @@ const MyOrder = () => {
 					</p>
 					<p>${sumTotal()}</p>
 				</div>
-				<button className="primary-button">
-					Checkout
-				</button>
+				<a href="/checkout">
+					<button className="primary-button">
+						Checkout
+					</button>
+				</a>
 			</div>
 		</aside>
     );
