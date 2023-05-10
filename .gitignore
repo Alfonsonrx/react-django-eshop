@@ -12,6 +12,7 @@ frontend/.pnp.js
 frontend//coverage
 
 /build
+/mediafiles
 
 frontend/.DS_Store
 frontend/.env.local
