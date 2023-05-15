@@ -5,35 +5,40 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework import viewsets
 
-from .models import Product, Category
-from .serializers import ProductSerializer, CategorySerializer
+from .models import Product, Category, ProductImage
+from .serializers import ProductSerializer, PostProductSerializer, CategorySerializer
 
 # Create your views here
 
 # from rest_framework import permissions
-from rest_framework.parsers import MultiPartParser
+from rest_framework.parsers import MultiPartParser,FormParser
 
-# class ProductViewSet(viewsets.ModelViewSet):
-#     queryset = Product.objects.order_by('-created')
-#     serializer_class = ProductSerializer
-#     parser_classes = (MultiPartParser, FormParser)
-#     permission_classes = [
-#         permissions.IsAuthenticatedOrReadOnly]
-
-#     def perform_create(self, serializer):
-#         serializer.save(creator=self.request.user)
 class Product_APIView(APIView):
-    parser_classes = (MultiPartParser, )
-    def get(self, request, format=None, *args, **kwargs):
+    parser_classes = (MultiPartParser, FormParser)
+
+    def get(self, request, format=None):
         products = Product.objects.all().order_by('-created')
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
+
     def post(self, request, format=None):
-        serializer = ProductSerializer(request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if 'images' in request.data:
+            images = request.data.pop('images')
+        else:
+            images = []
+        
+        productSerializer = PostProductSerializer(data=request.data)
+        if productSerializer.is_valid():
+            productSerializer.save()
+            p_id = productSerializer.data['id']
+            prod_obj = Product.objects.get(pk=p_id)
+            for each_image in images:
+                image_obj = ProductImage()
+                image_obj.product = prod_obj
+                image_obj.image = each_image
+                image_obj.save()
+            return Response(productSerializer.data, status=status.HTTP_201_CREATED)
+        return Response(productSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class Product_APIView_Detail(APIView):
     def get_object(self, pk):

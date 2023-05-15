@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const useGetProducts = (id) => {
 	const [products, setProducts] = useState([]);
-	useEffect(() => {
+	useEffect((id) => {
 		async function fetchData() {
 			let response = {}
 			if (id) {
@@ -23,7 +23,8 @@ export const useGetCategories = () => {
 
 	useEffect(() => {
 		async function fetchData() {
-			const response = await axios(`${process.env.REACT_APP_API_URL}/api/v1/categories`);
+			// const response = await axios(`${process.env.REACT_APP_API_URL}/api/v1/categories`);
+			const response = await axios(`http://127.0.0.1:8000/api/v1/categories/`);
 			setCategories(response.data);
 		}
 		fetchData();

@@ -4,6 +4,7 @@ import Layout from './containers/Layout';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Checkout from './pages/Checkout';
+import PostProduct from './pages/PostProduct';
 import './styles/global.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 						<Route exact path="/" element={<Home />} />
 						<Route exact path="/category/:id" element={<Home />} />
 						<Route exact path="/checkout" element={<Checkout />} />
+						<Route exact path="/insert-product" element={<PostProduct />} />
 						<Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
