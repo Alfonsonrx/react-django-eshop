@@ -21,7 +21,6 @@ const Header = () => {
 
 	return (
 		<nav>
-			<img src={menu} alt="menu" className="menu" />
 			<div className="navbar-left">
 				<img src={logo} alt="logo" className="nav-logo" />
 				<ul>
@@ -37,8 +36,8 @@ const Header = () => {
 			</div>
 			<div className="navbar-right">
 				<ul>
-					<li className="navbar-email" onClick={handleToggle}>
-						platzi@example.com
+					<li className="navbar-email" onClick={()=>handleToggle()}>
+						alfredo@sample.com
 					</li>
 					<li className="navbar-shopping-cart" onClick={()=>setToggleOrders(!toggleOrders)}>
 						<img src={shoppingCart} alt="shopping cart" />

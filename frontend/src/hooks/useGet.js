@@ -5,12 +5,8 @@ export const useGetProducts = (id) => {
 	const [products, setProducts] = useState([]);
 	useEffect((id) => {
 		async function fetchData() {
-			let response = {}
-			if (id) {
-				response = await axios(`${process.env.REACT_APP_API_URL}/api/v1/categories/${id}/products`);
-			} else {
-				response = await axios(`${process.env.REACT_APP_API_URL}/api/v1/products`);
-			}
+			let response = await axios(`${process.env.REACT_APP_API_URL}/api/v1/product/`);
+			// let response = await axios('http://localhost:8000/api/v1/product/');
 			setProducts(response.data);
 		}
 		fetchData();
@@ -24,7 +20,7 @@ export const useGetCategories = () => {
 	useEffect(() => {
 		async function fetchData() {
 			// const response = await axios(`${process.env.REACT_APP_API_URL}/api/v1/categories`);
-			const response = await axios(`http://127.0.0.1:8000/api/v1/categories/`);
+			const response = await axios(`${process.env.REACT_APP_API_URL}/api/v1/categories/`);
 			setCategories(response.data);
 		}
 		fetchData();

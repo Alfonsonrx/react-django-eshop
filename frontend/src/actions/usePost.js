@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import axios from 'axios';
 
 export const postProduct = async (data, files) => {
@@ -17,9 +16,20 @@ export const postProduct = async (data, files) => {
         console.log(p);
     }
     try {
-        const response = await axios.post(`http://127.0.0.1:8000/api/v1/product/`, formData);
-            
-        console.log(response);
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/product/`, formData);
+        
+        return response.data;
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+export const postCategory = async (data) => {
+    const body = JSON.stringify(data);
+    try {
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/categories/`, body);
+
+        return response.data;
     } catch (err) {
         console.log(err);
     }

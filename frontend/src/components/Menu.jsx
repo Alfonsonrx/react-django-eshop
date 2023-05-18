@@ -12,6 +12,9 @@ const Menu = () => {
                     <a href="/">My account</a>
                 </li>
                 <li>
+                    <a href="/insert-product">Insert Product</a>
+                </li>
+                <li>
                     <a href="/">Sign out</a>
                 </li>
             </ul>

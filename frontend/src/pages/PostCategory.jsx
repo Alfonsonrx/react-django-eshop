@@ -64,6 +64,7 @@ const PostProduct = () => {
             setData({ ...data, [e.target.name]: e.target.value });
         }
     };
+
     
     return (
         <div className='NewProduct'>
@@ -75,6 +76,8 @@ const PostProduct = () => {
                     <div className="input-group">
                         <label htmlFor="name" className="form-label">Name</label>
                         <input type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3" name='title' onChange={(e) => onChange(e)} value={data.title} />
+                        {/* <div className="input-field">
+                        </div> */}
                     </div>
                     <div className="input-group">
                         <label htmlFor="price" className="form-label">Price</label>
@@ -108,11 +111,11 @@ const PostProduct = () => {
                             multiple
                         />
                     </div>
-                    <ul className='list-images'>
+                    <ul>
                         {files.map((file, i) => (
-                        <li key={i} className='prod-image'>
-                            {/* {file.name} */}
-                            <img src={URL.createObjectURL(file)} alt={file.name} />
+                        <li key={i}>
+                            {/* <img src={files} alt='Img' /> */}
+                            {file.name} - {file.type}
                         </li>
                         ))}
                     </ul>

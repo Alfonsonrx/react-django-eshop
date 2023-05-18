@@ -10,7 +10,7 @@ import '../styles/ProductList.scss';
 
 const ProductList = () => {
     const { detailShowed } = useSelector(state=>state.prodDetail)
-	
+
 	let { id } = useParams();
 
 	const products = useGetProducts(id);

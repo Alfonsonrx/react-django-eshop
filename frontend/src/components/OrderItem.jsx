@@ -5,18 +5,17 @@ import '../styles/OrderItem.scss'
 import { removeFromCart } from '../redux/cartSlice';
 
 import close from '../assets/icons/icon_close.png';
+import defaultImage from '../assets/Default.png';
 
 const OrderItem = ({ product, indexValue }) => {
     const dispatch = useDispatch()
 
-	// const handleRemove = (index) => {
-	// 	removeFromCart(index);
-	// }
+	const prod_image = product.images.length > 0 ? product.images[0] : defaultImage;
 
     return (
         <div className="OrderItem">
 			<figure>
-				<img src={product.images[0]} alt={product.title} />
+				<img src={prod_image} alt={product.title} />
 			</figure>
 			<p>{product.title}</p>
 			<p>${product.price}</p>

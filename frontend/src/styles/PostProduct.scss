@@ -1,0 +1,81 @@
+@use 'vars';
+
+.NewProduct {
+	width: 100%;
+	height: 90vh;
+	display: grid;
+	place-items: center;
+}
+.title {
+	font-size: var(--lg);
+	margin-bottom: 40px;
+}
+.NewProduct-container {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	width: 400px;
+}
+
+.NewProduct-content, .input-group {
+	display: flex;
+	flex-direction: column;    
+}
+
+.NewProduct-content {
+	background-color: var(--very-light-pink);
+	margin: 24px;
+    padding: 2em;
+	border-radius:1em;
+}
+
+.list-images {
+	list-style-type: none;
+}
+.prod-image img {
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.form-label {
+	font-size: var(--sm);
+	font-weight: bold;
+	margin-bottom: 4px;
+}
+input, textarea, select {
+    min-height: 2em;
+    border: transparent;
+}
+
+.form-control {
+	background-color: var(--text-input-field);
+	border: none;
+	border-radius: 8px;
+	height: 30px;
+	font-size: var(--md);
+	padding: 6px;
+	margin-bottom: 12px;
+}
+.primary-button {
+	background-color: var(--hospital-green);
+	border-radius: 8px;
+	border: none;
+	color: var(--white);
+	width: 100%;
+	cursor: pointer;
+	font-size: var(--md);
+	font-weight: bold;
+	height: 50px;
+}
+.secondary-button, .category-input {
+	background-color: var(--white);
+	border-radius: 8px;
+	border: 1px solid var(--hospital-green);
+	color: var(--hospital-green);
+	width: 100%;
+	cursor: pointer;
+	font-size: var(--md);
+	font-weight: bold;
+	height: 50px;
+}

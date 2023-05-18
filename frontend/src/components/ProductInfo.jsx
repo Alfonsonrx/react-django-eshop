@@ -2,15 +2,19 @@ import React from 'react';
 import '../styles/ProductInfo.scss'
 import { addToCart } from '../redux/cartSlice';
 
-import addToCartIcon from '../assets/icons/bt_add_to_cart.svg'
+import addToCartIcon from '../assets/icons/bt_add_to_cart.svg';
+import defaultImage from '../assets/Default.png';
+
 import { useDispatch } from 'react-redux';
 
 const ProductInfo = ({ product }) => {
     const dispatch = useDispatch()
 
+	const prod_image = product.images.length > 0 ? product.images[0] : defaultImage;
+    
     return (
         <>
-            <img src={product.images[0]} alt="bike" />
+            <img src={prod_image} alt="bike" />
             <div className="ProductInfo">
                 <p>${ product.price }</p>
                 <p>{ product.title }</p>
