@@ -15,6 +15,9 @@ const Menu = () => {
                     <a href="/insert-product">Insert Product</a>
                 </li>
                 <li>
+                    <a href="/insert-category">Insert Category</a>
+                </li>
+                <li>
                     <a href="/">Sign out</a>
                 </li>
             </ul>

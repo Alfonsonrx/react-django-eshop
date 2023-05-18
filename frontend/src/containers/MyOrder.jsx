@@ -15,10 +15,6 @@ const MyOrder = () => {
 		return sum;
 	}
 
-	const handleCheckout = () => {
-		<Navigate to={'/checkout'} replace/>
-	}
-
     return (
         <aside className="MyOrder">
 			<div className="title-container">

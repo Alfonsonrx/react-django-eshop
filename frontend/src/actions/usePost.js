@@ -25,9 +25,15 @@ export const postProduct = async (data, files) => {
 };
 
 export const postCategory = async (data) => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    };
     const body = JSON.stringify(data);
     try {
-        const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/categories/`, body);
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/categories/`, body, config);
 
         return response.data;
     } catch (err) {
